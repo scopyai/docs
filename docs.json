@@ -56,8 +56,8 @@
     "dark": "/logo/icon.svg"
   },
   "logo": {
-    "light": "/logo/icon.svg",
-    "dark": "/logo/icon.svg",
+    "light": "/images/Frame10(1).png",
+    "dark": "/images/Frame10(1).png",
     "href": "https://scopy.dev"
   },
   "navbar": {
