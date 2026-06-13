@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Scopy Docs",
+  "name": "Scopy",
   "colors": {
-    "primary": "#2563eb",
-    "light": "#2563eb",
-    "dark": "#60a5fa"
+    "primary": "#18E299",
+    "light": "#18E299",
+    "dark": "#18E299"
   },
   "navigation": {
     "groups": [
@@ -62,7 +62,12 @@
         "label": "GitHub",
         "href": "https://github.com/scopyai/docs"
       }
-    ]
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.scopy.dev"
+    }
   },
   "contextual": {
     "options": [
