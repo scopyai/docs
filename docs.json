@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "maple",
   "name": "Scopy",
   "colors": {
-    "primary": "#18E299",
-    "light": "#18E299",
-    "dark": "#18E299"
+    "primary": "#5b82ff",
+    "light": "#5b82ff",
+    "dark": "#5b82ff"
   },
   "navigation": {
     "groups": [
@@ -51,16 +51,24 @@
       }
     ]
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/logo/icon.svg",
+    "dark": "/logo/icon.svg"
+  },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/icon.svg",
+    "dark": "/logo/icon.svg",
+    "href": "https://scopy.dev"
   },
   "navbar": {
     "links": [
       {
         "label": "GitHub",
-        "href": "https://github.com/scopyai/docs"
+        "href": "https://github.com/scopyai/scopy"
+      },
+      {
+        "href": "https://app.scopy.dev",
+        "label": "Dashboard"
       }
     ],
     "primary": {
@@ -75,15 +83,13 @@
       "view",
       "chatgpt",
       "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "perplexity"
     ]
   },
   "footer": {
     "socials": {
       "github": "https://github.com/scopyai"
     }
-  }
+  },
+  "description": "Open-source AI code review tool. Catches bugs and improves quality of code"
 }
