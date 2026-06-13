@@ -11,11 +11,7 @@
     "groups": [
       {
         "group": "Get started",
-        "pages": [
-          "index",
-          "quickstart",
-          "product/how-review-works"
-        ]
+        "pages": ["index", "quickstart", "product/how-review-works"]
       },
       {
         "group": "Product guide",
@@ -42,12 +38,6 @@
           "architecture/monorepo",
           "architecture/review-engine"
         ]
-      },
-      {
-        "group": "Contributing",
-        "pages": [
-          "contributing/frontend-guidelines"
-        ]
       }
     ]
   },
@@ -70,21 +60,10 @@
         "href": "https://app.scopy.dev",
         "label": "Dashboard"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.scopy.dev"
-    }
+    ]
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity"]
   },
   "footer": {
     "socials": {
