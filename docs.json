@@ -1,38 +1,57 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "name": "Scopy Docs",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#2563eb",
+    "light": "#2563eb",
+    "dark": "#60a5fa"
   },
-  "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
+    "groups": [
       {
-        "group": "Getting Started",
+        "group": "Get started",
         "pages": [
           "index",
-          "quickstart"
+          "quickstart",
+          "product/how-review-works"
+        ]
+      },
+      {
+        "group": "Product guide",
+        "pages": [
+          "product/connect-github",
+          "product/manage-repositories",
+          "product/review-pull-requests",
+          "product/analytics",
+          "product/team-and-github-settings",
+          "product/billing"
+        ]
+      },
+      {
+        "group": "Development",
+        "pages": [
+          "development/local-setup",
+          "development/environment-variables"
+        ]
+      },
+      {
+        "group": "Architecture",
+        "pages": [
+          "architecture/overview",
+          "architecture/monorepo",
+          "architecture/review-engine"
+        ]
+      },
+      {
+        "group": "Contributing",
+        "pages": [
+          "contributing/frontend-guidelines"
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
+  "favicon": "/favicon.svg",
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
@@ -40,15 +59,10 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "GitHub",
+        "href": "https://github.com/scopyai/docs"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
+    ]
   },
   "contextual": {
     "options": [
@@ -64,9 +78,7 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/scopyai"
     }
   }
 }
