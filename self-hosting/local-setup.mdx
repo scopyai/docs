@@ -1,0 +1,83 @@
+---
+title: "Local setup"
+description: "Run a self-hosted Scopy instance on your machine."
+---
+
+Use local setup when you want to test self-hosting, verify provider credentials, or inspect the full Scopy product flow before deploying it.
+
+## Prerequisites
+
+- Node.js 20 or newer.
+- pnpm
+- Docker, if you want to use the included local PostgreSQL service.
+
+## Install dependencies
+
+From the repository root:
+
+```bash
+pnpm install
+```
+
+## Create environment files
+
+```bash
+cp apps/api/.env.example apps/api/.env
+cp apps/web/.env.example apps/web/.env
+```
+
+The default local ports are:
+
+| Service     | Port   |
+| ----------- | ------ |
+| Web app     | `3000` |
+| API         | `3001` |
+| Landing app | `3002` |
+| PostgreSQL  | `5432` |
+
+## Start PostgreSQL
+
+For a lightweight local instance, start only the database from the included compose file and run the TypeScript services directly:
+
+```bash
+docker compose -f docker-compose.local.yml up db
+```
+
+## Prepare the database
+
+Run the application migrations and initialize the worker schema:
+
+```bash
+pnpm --filter api db:migrate
+pnpm --filter api worker:migrate
+```
+
+## Run Scopy
+
+```bash
+pnpm dev
+```
+
+The root `dev` script starts the product workspaces through Turbo. The API development task starts both the HTTP API and the worker process.
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+The web app talks to the API at `http://localhost:3001` by default.
+
+## Full local Docker stack
+
+`docker-compose.local.yml` also defines production-like API, worker, and web containers:
+
+| Service       | Purpose                                         |
+| ------------- | ----------------------------------------------- |
+| `db`          | PostgreSQL 16.                                  |
+| `api-migrate` | Applies Drizzle and Graphile Worker migrations. |
+| `api`         | Runs the HTTP API.                              |
+| `api-worker`  | Runs background review jobs.                    |
+| `web`         | Runs the product web app.                       |
+
+Use the full stack when you want to test container behavior. Use `db` plus local TypeScript processes for faster iteration while configuring or debugging a local instance.

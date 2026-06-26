@@ -14,10 +14,4 @@ Run this command from the repository root.
 
 - `index.mdx` and `quickstart.mdx`: entry points
 - `product/`: product usage guides
-- `development/`: local development setup
-- `architecture/`: system architecture
-- `contributing/`: contribution guidelines
-
-## Deployment
-
-Mintlify deploys from the default branch after the GitHub integration is connected.
+- `self-hosting/`: setup, configuration, and operator-focused system overview

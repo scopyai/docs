@@ -1,77 +1,40 @@
 ---
 title: "Quickstart"
-description: "Run the Scopy monorepo locally."
 ---
 
-## Prerequisites
+The fastest way to use Scopy is to connect GitHub, choose repositories, and open or update a pull request. Scopy reviews enabled repositories automatically and publishes confirmed findings back to GitHub.
 
-- Node.js 20 or newer
-- pnpm 9.15.9
-- Docker, if you want to use the included local PostgreSQL service
+## 1. Sign in
 
-## Install dependencies
+Open [app.scopy.dev](https://app.scopy.dev) and sign in.
 
-```bash
-pnpm install
-```
+## 2. Connect GitHub
 
-## Create local environment files
+Choose **Connect your GitHub repositories** and install the Scopy GitHub App on the user account or organization you want to review.
 
-```bash
-cp apps/api/.env.example apps/api/.env
-cp apps/web/.env.example apps/web/.env
-```
+During GitHub installation, select the repositories Scopy should be allowed to see. You can grant access to all repositories or choose specific repositories.
 
-The default local ports are:
+## 3. Choose repositories in Scopy
 
-| Service | Port |
-| --- | --- |
-| Web app | `3000` |
-| API | `3001` |
-| Landing app | `3002` |
-| PostgreSQL | `5432` |
+After returning from GitHub, Scopy shows the repositories available to the GitHub App installation. Enable the repositories where reviews should run.
 
-## Start PostgreSQL
+Scopy only reviews repositories that are enabled in the workspace. If a repository is missing, update the [GitHub App installation](https://github.com/apps/scopyai) to refresh the list of repositories available for review.
 
-The local compose file includes PostgreSQL and production-like API containers. For day-to-day development, the lightest path is usually to start only the database and run the TypeScript services directly:
+## 4. Open a pull request
 
-```bash
-docker compose -f docker-compose.local.yml up db
-```
+Create a new pull request or mark a draft pull request ready for review in an enabled repository. Scopy queues a review, analyzes the changed code and publishes confirmed findings back to the pull request page.
 
-## Prepare the database
+You can also request another review by mentioning the Scopy GitHub App in a pull request comment.
 
-Run Drizzle migrations and initialize the Graphile Worker schema:
+## 5. Review results
 
-```bash
-pnpm --filter api db:migrate
-pnpm --filter api worker:migrate
-```
+Scopy results appear in two places:
 
-## Run the app
+- GitHub pull request review comments and a summary comment.
+- The Scopy dashboard, where you can inspect pull requests, review state, findings and workspace analytics.
 
-```bash
-pnpm dev
-```
+## Next to learn
 
-The root `dev` script runs Turbo, which starts each workspace's development task. The API development task starts both the Elysia server and the Graphile Worker process.
-
-## Useful checks
-
-```bash
-pnpm typecheck
-pnpm build
-pnpm --filter api test
-pnpm --filter tools test
-```
-
-## Open the product
-
-Visit:
-
-```text
-http://localhost:3000
-```
-
-The web app talks to the API at `http://localhost:3001` by default.
-
+- [Manage repositories](/product/manage-repositories) to control where Scopy runs.
+- [Review pull requests](/product/review-pull-requests) to understand review states and skipped reviews.
+- [Analytics](/product/analytics) to track workspace review activity over time.

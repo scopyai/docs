@@ -1,37 +1,30 @@
 ---
-title: "Scopy developer docs"
-description: "Developer documentation for the Scopy monorepo."
+title: "Ship fast. Stay safe."
+description: "Learn how to use Scopy for AI code reviewer"
 ---
 
-Scopy is an open-source AI code review tool for GitHub pull requests. It helps teams connect a GitHub organization, enable repositories, run AI review on pull requests, and track review outcomes over time.
-
-These docs cover both product usage and contributor development.
+Scopy is an open-source AI code reviewer. It helps teams catch bugs, supporting the desired velocity, while keeping production safe from bugs and vulnerabilities.
 
 ## Start here
 
-- [How Scopy works](/product/how-review-works): understand the product workflow from GitHub installation to PR comments.
-- [Connect GitHub](/product/connect-github): install the GitHub App and finish onboarding.
-- [Manage repositories](/product/manage-repositories): choose where reviews run.
-- [Review pull requests](/product/review-pull-requests): inspect review results in the product and on GitHub.
-- [Quickstart](/quickstart): install dependencies, configure local env files, and run the app.
+- [Quickstart](/quickstart): connect GitHub and receive your first review.
+- [Manage repositories](/product/manage-repositories): manage how repositories are being reviewed in your workspace.
+- [View analytics](/product/analytics): view reports about your usage to better understand error-prone areas.
 
-## Repository at a glance
+## Common questions
 
-```text
-apps/
-  api/       Elysia API, Better Auth, Drizzle schema, billing, GitHub webhooks, review worker entrypoints
-  web/       TanStack Start application for the authenticated product
-  landing/   TanStack Start marketing site
-  tools/     repository analysis, diff context, symbol lookup, text search, and semantic indexing utilities
-packages/
-  ui/        shared shadcn/ui components, styles, and utilities
-docs/        Mintlify documentation source
-```
+### Where does Scopy run?
 
-## Core development rules
+You can use hosted Scopy at [app.scopy.dev](https://app.scopy.dev) or run your own instance. Hosted Scopy is the fastest path for most teams. Self-hosting is available when you need more control over deployment, data, credentials, or model configuration.
 
-- Frontend data fetching should use React Query.
-- Frontend API calls should use the Eden treaty client from `apps/web/src/lib/api.ts`.
-- Frontend code should import API types from the `api` workspace package.
-- UI should prefer shared shadcn/ui components from `@workspace/ui`.
-- API routes should preserve Elysia type inference so the frontend treaty client stays useful.
+### What does Scopy need access to?
+
+Scopy uses a GitHub App installation. GitHub controls which account or organization is connected and which repositories the app can access. Scopy only reviews repositories that are both visible to the GitHub App and enabled inside the Scopy workspace.
+
+### Where do review results appear?
+
+Scopy publishes confirmed findings to GitHub pull requests and also stores review history in the Scopy dashboard. The dashboard gives workspace-level visibility into repositories, pull requests, findings, usage, and analytics.
+
+### Can I self-host it?
+
+Yes. See [Self-hosting overview](/self-hosting/overview) for deployment requirements, [Local setup](/self-hosting/local-setup) for running an instance locally, and [Configuration](/self-hosting/configuration) for environment variables.

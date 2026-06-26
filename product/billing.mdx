@@ -20,15 +20,4 @@ Depending on workspace state, you may see actions to:
 
 Scopy tracks billing tier and credit balance on the workspace. Scopy usage can debit credits based on model and vector usage recorded during review runs.
 
-The API contains billing policy and usage accounting in `apps/api/src/modules/billing`.
-
-## Test mode
-
-Local and staging billing can run in Creem test mode with:
-
-```text
-CREEM_TEST_MODE=true
-```
-
-Use real product ids and webhook secrets for environments where subscription events should affect workspace billing state.
-
+Billing changes apply to the selected workspace, not to every workspace connected to your user account.

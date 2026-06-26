@@ -1,6 +1,6 @@
 ---
 title: "Review pull requests"
-description: "View pull requests, inspect review details, and understand published findings."
+description: "View pull requests, inspect review details and understand published findings."
 ---
 
 Open a repository in Scopy to view its pull requests and review activity.
@@ -28,14 +28,14 @@ If a pull request needs another pass, mention the GitHub App in a pull request c
 
 ## Skipped reviews
 
-A review can be skipped when the pull request is too large for the configured review limits or when repository configuration excludes the changed files.
+Scopy may skip a review instead of running analysis. When that happens, the run is marked **skipped** and Scopy posts a summary comment on GitHub with the reason.
 
-Current review limits are:
+Common skip reasons:
 
-| Limit | Value |
-| --- | --- |
-| Maximum changed files | `300` |
-| Maximum serialized diff characters | `100000` |
+- **No matching path filters** - After applying the repository's include and exclude path patterns, no changed files remain to review. Workspace defaults exclude `**/*.json`.
+- **Changed line limit exceeded** - The pull request changes more reviewable lines than the configured maximum. Reviewable line count is the sum of additions and deletions on files that pass path filters.
+- **No usage balance** - The workspace has no remaining usage allowance. See [Billing](/product/billing).
 
-When a review is skipped, the run records a skip reason instead of producing unreliable feedback.
+The default maximum changed lines is `15,000`. You can adjust this limit and path patterns in repository review settings. The limit can be set anywhere from `1` to `100,000` changed lines.
 
+When a review is skipped, Scopy records the skip reason on the review run instead of publishing findings.

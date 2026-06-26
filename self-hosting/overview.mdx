@@ -1,0 +1,61 @@
+---
+title: "Overview"
+description: "What you need to run your own Scopy instance."
+---
+
+Self-hosting Scopy gives you more granular control over deployment, data storage, provider credentials, model configuration and operational policies. It is the right path when hosted Scopy does not fit your security, compliance, network or customization requirements.
+
+## What you run
+
+A Scopy instance has four main runtime pieces:
+
+| Piece      | Purpose                                                                                            |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| Web app    | The authenticated dashboard used by workspace members.                                             |
+| API        | Authentication, GitHub integration, repository state, billing, analytics and review orchestration. |
+| Worker     | Background jobs for GitHub events and pull request reviews.                                        |
+| PostgreSQL | Product data, auth data, review history, billing state and job storage.                            |
+
+Optional semantic code search uses Qdrant. Without Qdrant, Scopy can still review pull requests using diffs, repository files, symbol context and text search.
+
+## Required external services
+
+Before a production deployment, prepare:
+
+- A GitHub App for repository access, webhook delivery, and pull request comments.
+- Google OAuth credentials for user sign-in.
+- An OpenRouter API key for review model calls.
+- A PostgreSQL database.
+- Public HTTPS URLs for the web app and API.
+
+Billing is optional for private internal deployments, but the current app has billing configuration fields. Use placeholder or test-mode values only when you understand which flows are disabled or not being exercised.
+
+## Deployment model
+
+The included Dockerfiles build production-style containers for the web app and API. The API container can run either the HTTP API or the worker process, depending on the command.
+
+In production, run at least:
+
+- One web process.
+- One API process.
+- One worker process.
+- One PostgreSQL database.
+
+Run database migrations before starting the API and worker against a new database.
+
+## Production checklist
+
+- Set stable public URLs in `BETTER_AUTH_URL`, `FRONTEND_URL`, `VITE_API_BASE_URL`, and `VITE_WEB_BASE_URL`.
+- Use a long random `BETTER_AUTH_SECRET`.
+- Configure GitHub App id, slug, OAuth client credentials, private key, and webhook secret.
+- Configure `OPENROUTER_API_KEY` and choose review models.
+- Apply Drizzle and Graphile Worker migrations.
+- Route GitHub webhooks to the API.
+- Ensure the worker can reach GitHub, OpenRouter, PostgreSQL, and optional Qdrant.
+- Persist `REVIEW_WORKDIR` and `REVIEW_RUNS_DIR` if you need review workspaces or debug artifacts to survive restarts.
+
+## Next steps
+
+- Use [Local setup](/self-hosting/local-setup) to run Scopy locally.
+- Use [Configuration](/self-hosting/configuration) to prepare environment variables.
+- Read [How self-hosted Scopy works](/self-hosting/how-scopy-works) for the runtime and review flow.

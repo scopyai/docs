@@ -25,18 +25,12 @@
         ]
       },
       {
-        "group": "Development",
+        "group": "Self-hosting",
         "pages": [
-          "development/local-setup",
-          "development/environment-variables"
-        ]
-      },
-      {
-        "group": "Architecture",
-        "pages": [
-          "architecture/overview",
-          "architecture/monorepo",
-          "architecture/review-engine"
+          "self-hosting/overview",
+          "self-hosting/local-setup",
+          "self-hosting/configuration",
+          "self-hosting/how-scopy-works"
         ]
       }
     ]
