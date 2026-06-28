@@ -11,13 +11,31 @@ The billing area shows the selected workspace's current plan, credit balance, us
 
 Depending on workspace state, you may see actions to:
 
-- Start a checkout flow.
+- Start the one-time **$1 trial**.
+- Subscribe to **Premium** or **Ultra**.
 - Open the billing portal.
 - Change plans.
 - Cancel a subscription.
-
-## Plans and credits
-
-Scopy tracks billing tier and credit balance on the workspace. Scopy usage can debit credits based on model and vector usage recorded during review runs.
+- Contact the founder about **Enterprise**.
 
 Billing changes apply to the selected workspace, not to every workspace connected to your user account.
+
+## Plans
+
+| Plan              | Price        | Usage                                                        |
+| ----------------- | ------------ | ------------------------------------------------------------ |
+| **Starter trial** | $1 one-time  | Enough for roughly 3–5 pull request reviews on the workspace |
+| **Premium**       | $19.99/month | Monthly review usage allowance included                      |
+| **Ultra**         | $99.99/month | Higher monthly review usage allowance included               |
+| **Enterprise**    | Custom       | Tailored usage, onboarding, and support                      |
+
+The **$1 trial** is available once per user account. It unlocks review usage for the workspace without starting a subscription. After the trial is used, choose a monthly plan to keep reviewing pull requests.
+
+**Enterprise** is handled manually: you can always email founder at [matt@scopy.dev](mailto:matt@scopy.dev?subject=Enterprise%20plan) with any questions.
+
+## Credits and usage
+
+Scopy tracks billing tier and credit balance on each workspace. Review runs debit credits based on model and vector usage recorded during the run.
+
+- Paid monthly plans include a usage allowance that resets each billing period.
+- When a workspace runs out of credits, new reviews are skipped until you add usage through the trial, upgrade, or wait for the next billing reset.
