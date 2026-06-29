@@ -24,7 +24,7 @@ Before a production deployment, prepare:
 
 - A GitHub App for repository access, webhook delivery, and pull request comments.
 - Google OAuth credentials for user sign-in.
-- An OpenRouter API key for review model calls.
+- An OpenRouter API key or Vercel AI Gateway API key for review model calls.
 - A PostgreSQL database.
 - Public HTTPS URLs for the web app and API.
 
@@ -48,10 +48,10 @@ Run database migrations before starting the API and worker against a new databas
 - Set stable public URLs in `BETTER_AUTH_URL`, `FRONTEND_URL`, `VITE_API_BASE_URL`, and `VITE_WEB_BASE_URL`.
 - Use a long random `BETTER_AUTH_SECRET`.
 - Configure GitHub App id, slug, OAuth client credentials, private key, and webhook secret.
-- Configure `OPENROUTER_API_KEY` and choose review models.
+- Configure `OPENROUTER_API_KEY` or `AI_GATEWAY_API_KEY` and choose review models.
 - Apply Drizzle and Graphile Worker migrations.
 - Route GitHub webhooks to the API.
-- Ensure the worker can reach GitHub, OpenRouter, PostgreSQL, and optional Qdrant.
+- Ensure the worker can reach GitHub, the selected AI provider, PostgreSQL, and optional Qdrant.
 - Persist `REVIEW_WORKDIR` and `REVIEW_RUNS_DIR` if you need review workspaces or debug artifacts to survive restarts.
 
 ## Next steps

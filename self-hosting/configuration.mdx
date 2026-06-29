@@ -23,17 +23,17 @@ The API validates configuration when the process starts.
 | `CREEM_TEST_MODE`                 | No       | `true`                                   | Enables Creem test mode when set to `true`.                        |
 | `CREEM_PREMIUM_PRODUCT_ID`        | Yes      | None                                     | Premium billing product id.                                        |
 | `CREEM_ULTRA_PRODUCT_ID`          | Yes      | None                                     | Ultra billing product id.                                          |
-| `CREEM_STARTER_PRODUCT_ID`        | Yes      | None                                     | One-time $1 starter trial product id.                              |
-| `STARTER_CREDIT_MICRO_USD`        | No       | `1500000`                                | Usage credits granted by the starter purchase, in micro-USD.       |
+| `SIGNUP_CREDIT_MICRO_USD`         | No       | `1000000`                                | Default usage balance for newly onboarded workspaces, in micro-USD. |
 | `GITHUB_APP_ID`                   | No       | None                                     | GitHub App id.                                                     |
 | `GITHUB_APP_SLUG`                 | No       | None                                     | GitHub App slug used for install URLs.                             |
 | `GITHUB_APP_CLIENT_ID`            | No       | None                                     | GitHub App OAuth client id.                                        |
 | `GITHUB_APP_CLIENT_SECRET`        | No       | None                                     | GitHub App OAuth client secret.                                    |
 | `GITHUB_APP_PRIVATE_KEY`          | No       | None                                     | GitHub App private key.                                            |
 | `GITHUB_APP_WEBHOOK_SECRET`       | No       | None                                     | GitHub webhook signing secret.                                     |
-| `OPENROUTER_API_KEY`              | No       | None                                     | Required for AI review model calls.                                |
-| `REVIEW_MODEL`                    | No       | `z-ai/glm-5.1`                           | Main reviewer model id passed to OpenRouter.                       |
-| `REVIEW_VERIFIER_MODEL`           | No       | `openai/gpt-5.4-mini`                    | Verifier model id passed to OpenRouter.                            |
+| `OPENROUTER_API_KEY`              | No       | None                                     | Preferred provider key for AI review model calls.                  |
+| `AI_GATEWAY_API_KEY`              | No       | None                                     | Vercel AI Gateway fallback key when OpenRouter is not configured.  |
+| `REVIEW_MODEL`                    | No       | `z-ai/glm-5.1`                           | Main reviewer model id passed to the selected AI provider.         |
+| `REVIEW_VERIFIER_MODEL`           | No       | `openai/gpt-5.4-mini`                    | Verifier model id passed to the selected AI provider.              |
 | `REVIEW_WORKDIR`                  | No       | `.data/reviews`                          | Working directory for checked-out review repositories.             |
 | `REVIEW_RUNS_DIR`                 | No       | `.runs`                                  | Directory for review debug artifacts.                              |
 | `QDRANT_URL`                      | No       | None                                     | Enables semantic code search when set.                             |
@@ -69,7 +69,7 @@ After installing the app on an account or organization, Scopy can only see repos
 
 ## Model settings
 
-Set `OPENROUTER_API_KEY` before expecting reviews to run. `REVIEW_MODEL` controls the main reviewer model and `REVIEW_VERIFIER_MODEL` controls the verification pass used before findings are published.
+Set either `OPENROUTER_API_KEY` or `AI_GATEWAY_API_KEY` before expecting reviews to run. If both are present, Scopy uses OpenRouter. If OpenRouter is absent, Scopy uses Vercel AI Gateway. `REVIEW_MODEL` controls the main reviewer model and `REVIEW_VERIFIER_MODEL` controls the verification pass used before findings are published.
 
 ## Optional semantic search
 
