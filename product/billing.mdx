@@ -21,12 +21,12 @@ Billing changes apply to the selected workspace, not to every workspace connecte
 
 ## Plans
 
-| Plan           | Price        | Usage                                           |
-| -------------- | ------------ | ----------------------------------------------- |
-| **Free**       | $0           | $1 of included review usage after onboarding    |
-| **Premium**    | $19.99/month | Monthly review usage allowance included         |
-| **Ultra**      | $99.99/month | Higher monthly review usage allowance included  |
-| **Enterprise** | Custom       | Tailored usage, onboarding, and support         |
+| Plan           | Price        | Usage                                          |
+| -------------- | ------------ | ---------------------------------------------- |
+| **Free**       | $0           | $1 of included review usage after onboarding   |
+| **Premium**    | $19.99/month | Monthly review usage allowance included        |
+| **Ultra**      | $99.99/month | Higher monthly review usage allowance included |
+| **Enterprise** | Custom       | Tailored usage, onboarding, and support        |
 
 Newly onboarded workspaces start with **$1 of included usage** without a payment method. After the included usage is used, choose a monthly plan to keep reviewing pull requests.
 
@@ -38,3 +38,20 @@ Scopy tracks billing tier and credit balance on each workspace. Review runs debi
 
 - Paid monthly plans include a usage allowance that resets each billing period.
 - When a workspace runs out of credits, new reviews are skipped until you upgrade or wait for the next billing reset.
+
+## Model billing mode
+
+Each workspace chooses how model usage is paid for, from **Settings → Model billing**:
+
+- **Platform billing** (default): reviews run on Scopy's provider keys and consume your workspace credits.
+- **Bring your own key**: reviews use your own OpenRouter or Vercel AI Gateway key. Model usage is billed directly to your provider account and is **not** charged to workspace credits.
+
+To enable bring-your-own-key, choose **Bring your own key** and paste an **OpenRouter** or **Vercel AI Gateway** key. You can replace or remove a key at any time.
+
+If you store both keys, choose which one reviews use, or leave it on **Automatic** (which prefers OpenRouter).
+
+### Per-repository override
+
+The workspace setting is the default for every repository. Any repository can override it from its own **Model billing** settings — for example, keep the workspace on platform billing but run one repository on your own key. An explicit repository choice stays fixed even if the workspace default changes later.
+
+If a repository is set to bring-your-own-key but no key is configured, its reviews are skipped with a note on the pull request until you add a key or switch it back to platform billing.

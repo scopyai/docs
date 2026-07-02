@@ -9,43 +9,45 @@ Scopy is configured through environment variables. The API and web app have sepa
 
 The API validates configuration when the process starts.
 
-| Variable                          | Required | Default                                  | Purpose                                                            |
-| --------------------------------- | -------- | ---------------------------------------- | ------------------------------------------------------------------ |
-| `PORT`                            | No       | `3001`                                   | API HTTP port.                                                     |
-| `DATABASE_URL`                    | Yes      | None                                     | PostgreSQL connection string for application data and worker jobs. |
-| `BETTER_AUTH_SECRET`              | Yes      | None                                     | Long random secret for auth signing.                               |
-| `BETTER_AUTH_URL`                 | Yes      | None                                     | Public API auth origin, for example `https://api.example.com`.     |
-| `FRONTEND_URL`                    | Yes      | None                                     | Public web app origin used for CORS and redirects.                 |
-| `GOOGLE_CLIENT_ID`                | Yes      | None                                     | Google OAuth client id for sign-in.                                |
-| `GOOGLE_CLIENT_SECRET`            | Yes      | None                                     | Google OAuth client secret for sign-in.                            |
-| `CREEM_API_KEY`                   | Yes      | None                                     | Creem billing API key.                                             |
-| `CREEM_WEBHOOK_SECRET`            | Yes      | None                                     | Creem webhook signature secret.                                    |
-| `CREEM_TEST_MODE`                 | No       | `true`                                   | Enables Creem test mode when set to `true`.                        |
-| `CREEM_PREMIUM_PRODUCT_ID`        | Yes      | None                                     | Premium billing product id.                                        |
-| `CREEM_ULTRA_PRODUCT_ID`          | Yes      | None                                     | Ultra billing product id.                                          |
-| `SIGNUP_CREDIT_MICRO_USD`         | No       | `1000000`                                | Default usage balance for newly onboarded workspaces, in micro-USD. |
-| `GITHUB_APP_ID`                   | No       | None                                     | GitHub App id.                                                     |
-| `GITHUB_APP_SLUG`                 | No       | None                                     | GitHub App slug used for install URLs.                             |
-| `GITHUB_APP_CLIENT_ID`            | No       | None                                     | GitHub App OAuth client id.                                        |
-| `GITHUB_APP_CLIENT_SECRET`        | No       | None                                     | GitHub App OAuth client secret.                                    |
-| `GITHUB_APP_PRIVATE_KEY`          | No       | None                                     | GitHub App private key.                                            |
-| `GITHUB_APP_WEBHOOK_SECRET`       | No       | None                                     | GitHub webhook signing secret.                                     |
-| `OPENROUTER_API_KEY`              | No       | None                                     | Preferred provider key for AI review model calls.                  |
-| `AI_GATEWAY_API_KEY`              | No       | None                                     | Vercel AI Gateway fallback key when OpenRouter is not configured.  |
-| `REVIEW_MODEL`                    | No       | `z-ai/glm-5.1`                           | Main reviewer model id passed to the selected AI provider.         |
-| `REVIEW_VERIFIER_MODEL`           | No       | `openai/gpt-5.4-mini`                    | Verifier model id passed to the selected AI provider.              |
-| `REVIEW_WORKDIR`                  | No       | `.data/reviews`                          | Working directory for checked-out review repositories.             |
-| `REVIEW_RUNS_DIR`                 | No       | `.runs`                                  | Directory for review debug artifacts.                              |
-| `QDRANT_URL`                      | No       | None                                     | Enables semantic code search when set.                             |
-| `QDRANT_API_KEY`                  | No       | None                                     | Qdrant API key.                                                    |
-| `QDRANT_COLLECTION`               | No       | `review_code_chunks`                     | Qdrant collection name.                                            |
-| `QDRANT_INFERENCE_MODEL`          | No       | `sentence-transformers/all-minilm-l6-v2` | Embedding model name for Qdrant inference.                         |
-| `QDRANT_VECTOR_SIZE`              | No       | `384`                                    | Vector size expected by the collection.                            |
-| `VECTOR_WRITE_MICROUSD_PER_GIB`   | No       | `2500000`                                | Vector write cost model for usage accounting.                      |
-| `VECTOR_QUERY_MICROUSD_PER_TIB`   | No       | `7500`                                   | Vector query cost model for usage accounting.                      |
-| `VECTOR_NETWORK_MICROUSD_PER_GIB` | No       | `90000`                                  | Vector network cost model for usage accounting.                    |
-| `TELEGRAM_BOT_TOKEN`              | No       | None                                     | Optional feedback notification bot token.                          |
-| `TELEGRAM_FEEDBACK_CHAT_ID`       | No       | None                                     | Optional Telegram chat id for feedback notifications.              |
+| Variable                          | Required | Default                                  | Purpose                                                                                                    |
+| --------------------------------- | -------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `PORT`                            | No       | `3001`                                   | API HTTP port.                                                                                             |
+| `DATABASE_URL`                    | Yes      | None                                     | PostgreSQL connection string for application data and worker jobs.                                         |
+| `BETTER_AUTH_SECRET`              | Yes      | None                                     | Long random secret for auth signing.                                                                       |
+| `BETTER_AUTH_URL`                 | Yes      | None                                     | Public API auth origin, for example `https://api.example.com`.                                             |
+| `FRONTEND_URL`                    | Yes      | None                                     | Public web app origin used for CORS and redirects.                                                         |
+| `GOOGLE_CLIENT_ID`                | Yes      | None                                     | Google OAuth client id for sign-in.                                                                        |
+| `GOOGLE_CLIENT_SECRET`            | Yes      | None                                     | Google OAuth client secret for sign-in.                                                                    |
+| `CREEM_API_KEY`                   | Yes      | None                                     | Creem billing API key.                                                                                     |
+| `CREEM_WEBHOOK_SECRET`            | Yes      | None                                     | Creem webhook signature secret.                                                                            |
+| `CREEM_TEST_MODE`                 | No       | `true`                                   | Enables Creem test mode when set to `true`.                                                                |
+| `CREEM_PREMIUM_PRODUCT_ID`        | Yes      | None                                     | Premium billing product id.                                                                                |
+| `CREEM_ULTRA_PRODUCT_ID`          | Yes      | None                                     | Ultra billing product id.                                                                                  |
+| `SIGNUP_CREDIT_MICRO_USD`         | No       | `1000000`                                | Default usage balance for newly onboarded workspaces, in micro-USD.                                        |
+| `GITHUB_APP_ID`                   | No       | None                                     | GitHub App id.                                                                                             |
+| `GITHUB_APP_SLUG`                 | No       | None                                     | GitHub App slug used for install URLs.                                                                     |
+| `GITHUB_APP_CLIENT_ID`            | No       | None                                     | GitHub App OAuth client id.                                                                                |
+| `GITHUB_APP_CLIENT_SECRET`        | No       | None                                     | GitHub App OAuth client secret.                                                                            |
+| `GITHUB_APP_PRIVATE_KEY`          | No       | None                                     | GitHub App private key.                                                                                    |
+| `GITHUB_APP_WEBHOOK_SECRET`       | No       | None                                     | GitHub webhook signing secret.                                                                             |
+| `OPENROUTER_API_KEY`              | No       | None                                     | Preferred provider key for AI review model calls.                                                          |
+| `AI_GATEWAY_API_KEY`              | No       | None                                     | Vercel AI Gateway fallback key when OpenRouter is not configured.                                          |
+| `MASTER_ENCRYPTION_KEY`           | No       | None                                     | Base64 of 32 random bytes. Required only to store bring-your-own-key provider keys; encrypts them at rest. |
+| `SECRETS_PROVIDER`                | No       | `env`                                    | Backend that protects the encryption key. Only `env` is supported today.                                   |
+| `REVIEW_MODEL`                    | No       | `z-ai/glm-5.1`                           | Main reviewer model id passed to the selected AI provider.                                                 |
+| `REVIEW_VERIFIER_MODEL`           | No       | `openai/gpt-5.4-mini`                    | Verifier model id passed to the selected AI provider.                                                      |
+| `REVIEW_WORKDIR`                  | No       | `.data/reviews`                          | Working directory for checked-out review repositories.                                                     |
+| `REVIEW_RUNS_DIR`                 | No       | `.runs`                                  | Directory for review debug artifacts.                                                                      |
+| `QDRANT_URL`                      | No       | None                                     | Enables semantic code search when set.                                                                     |
+| `QDRANT_API_KEY`                  | No       | None                                     | Qdrant API key.                                                                                            |
+| `QDRANT_COLLECTION`               | No       | `review_code_chunks`                     | Qdrant collection name.                                                                                    |
+| `QDRANT_INFERENCE_MODEL`          | No       | `sentence-transformers/all-minilm-l6-v2` | Embedding model name for Qdrant inference.                                                                 |
+| `QDRANT_VECTOR_SIZE`              | No       | `384`                                    | Vector size expected by the collection.                                                                    |
+| `VECTOR_WRITE_MICROUSD_PER_GIB`   | No       | `2500000`                                | Vector write cost model for usage accounting.                                                              |
+| `VECTOR_QUERY_MICROUSD_PER_TIB`   | No       | `7500`                                   | Vector query cost model for usage accounting.                                                              |
+| `VECTOR_NETWORK_MICROUSD_PER_GIB` | No       | `90000`                                  | Vector network cost model for usage accounting.                                                            |
+| `TELEGRAM_BOT_TOKEN`              | No       | None                                     | Optional feedback notification bot token.                                                                  |
+| `TELEGRAM_FEEDBACK_CHAT_ID`       | No       | None                                     | Optional Telegram chat id for feedback notifications.                                                      |
 
 ## Web variables
 
@@ -69,7 +71,17 @@ After installing the app on an account or organization, Scopy can only see repos
 
 ## Model settings
 
-Set either `OPENROUTER_API_KEY` or `AI_GATEWAY_API_KEY` before expecting reviews to run. If both are present, Scopy uses OpenRouter. If OpenRouter is absent, Scopy uses Vercel AI Gateway. `REVIEW_MODEL` controls the main reviewer model and `REVIEW_VERIFIER_MODEL` controls the verification pass used before findings are published.
+Set either `OPENROUTER_API_KEY` or `AI_GATEWAY_API_KEY` before expecting reviews to run. If both are present, Scopy uses OpenRouter. If OpenRouter is absent, Scopy uses Vercel AI Gateway. `REVIEW_MODEL` controls the main reviewer model and `REVIEW_VERIFIER_MODEL` controls the verification pass used before findings are published. These keys are the platform default used for every workspace.
+
+## Bring-your-own-key storage
+
+Workspaces can also supply their own OpenRouter or Vercel AI Gateway key (see [Billing](/product/billing#model-billing-mode)). To allow this on a self-hosted instance, set `MASTER_ENCRYPTION_KEY` — a base64 string of 32 random bytes used to encrypt stored keys at rest:
+
+```bash
+openssl rand -base64 32
+```
+
+Treat this as a critical secret. If you lose it, stored keys become unreadable; if it leaks together with the database, they can be decrypted. Leave `MASTER_ENCRYPTION_KEY` unset if you don't need per-workspace keys — reviews still run on the platform keys above.
 
 ## Optional semantic search
 
