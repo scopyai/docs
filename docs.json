@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
-  "name": "Scopy",
+  "name": "Scopy AI",
   "colors": {
     "primary": "#5b82ff",
     "light": "#5b82ff",
@@ -64,5 +64,5 @@
       "github": "https://github.com/scopyai"
     }
   },
-  "description": "Open-source AI code review tool. Catches bugs and improves quality of code"
+  "description": "Scopy AI is an open-source AI code review tool. Catches bugs and improves quality of code"
 }
