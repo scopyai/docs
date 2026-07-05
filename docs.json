@@ -40,8 +40,8 @@
     "dark": "/logo/icon.svg"
   },
   "logo": {
-    "light": "/images/Frame10(1).png",
-    "dark": "/images/Frame10(1).png",
+    "light": "/images/logo-blue.png",
+    "dark": "/images/logo-white.png",
     "href": "https://scopy.dev"
   },
   "navbar": {
