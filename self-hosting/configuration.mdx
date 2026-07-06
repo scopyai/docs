@@ -23,7 +23,8 @@ The API validates configuration when the process starts.
 | `CREEM_TEST_MODE`                 | No       | `true`                                   | Enables Creem test mode when set to `true`.                                                                |
 | `CREEM_PREMIUM_PRODUCT_ID`        | Yes      | None                                     | Premium billing product id.                                                                                |
 | `CREEM_ULTRA_PRODUCT_ID`          | Yes      | None                                     | Ultra billing product id.                                                                                  |
-| `SIGNUP_CREDIT_MICRO_USD`         | No       | `1000000`                                | Default usage balance for newly onboarded workspaces, in micro-USD.                                        |
+| `CREEM_CREDIT_TOPUP_PRODUCT_ID`   | No       | None                                     | Product id used for buying additional review credits.                                                      |
+| `SIGNUP_REVIEW_CREDITS`           | No       | `0`                                      | Review credits granted to newly onboarded workspaces.                                                       |
 | `GITHUB_APP_ID`                   | No       | None                                     | GitHub App id.                                                                                             |
 | `GITHUB_APP_SLUG`                 | No       | None                                     | GitHub App slug used for install URLs.                                                                     |
 | `GITHUB_APP_CLIENT_ID`            | No       | None                                     | GitHub App OAuth client id.                                                                                |

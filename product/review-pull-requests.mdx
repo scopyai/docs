@@ -34,7 +34,7 @@ Common skip reasons:
 
 - **No matching path filters** - After applying the repository's include and exclude path patterns, no changed files remain to review. Workspace defaults exclude `**/*.json`.
 - **Changed line limit exceeded** - The pull request changes more reviewable lines than the configured maximum. Reviewable line count is the sum of additions and deletions on files that pass path filters.
-- **No usage balance** - The workspace has no remaining usage allowance. See [Billing](/product/billing).
+- **Not enough credits** - The workspace has no remaining review credits. See [Billing](/product/billing).
 
 The default maximum changed lines is `15,000`. You can adjust this limit and path patterns in repository review settings. The limit can be set anywhere from `1` to `100,000` changed lines.
 

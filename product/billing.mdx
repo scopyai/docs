@@ -7,7 +7,7 @@ Billing is managed per workspace.
 
 ## Billing page
 
-The billing area shows the selected workspace's current plan, credit balance, usage history, and available subscription actions.
+The billing area shows the selected workspace's current plan, credit balance, review history, and available subscription actions.
 
 Depending on workspace state, you may see actions to:
 
@@ -21,23 +21,27 @@ Billing changes apply to the selected workspace, not to every workspace connecte
 
 ## Plans
 
-| Plan           | Price        | Usage                                          |
-| -------------- | ------------ | ---------------------------------------------- |
-| **Free**       | $0           | $1 of included review usage after onboarding   |
-| **Premium**    | $19.99/month | Monthly review usage allowance included        |
-| **Ultra**      | $99.99/month | Higher monthly review usage allowance included |
-| **Enterprise** | Custom       | Tailored usage, onboarding, and support        |
+| Plan           | Price        | Included credits                                 |
+| -------------- | ------------ | ------------------------------------------------ |
+| **Free**       | $0           | No included credits — add a plan to start review |
+| **Premium**    | $19.99/month | 25 review credits per month                      |
+| **Ultra**      | $99.99/month | 150 review credits per month                     |
+| **Enterprise** | Custom       | Custom credit volume, onboarding, and support    |
 
-Newly onboarded workspaces start with **$1 of included usage** without a payment method. After the included usage is used, choose a monthly plan to keep reviewing pull requests.
+The Free plan lets you connect GitHub and set up repositories, but managed cloud reviews need credits. Choose a monthly plan to start reviewing pull requests.
 
 **Enterprise** is handled manually: you can always email founder at [matt@scopy.dev](mailto:matt@scopy.dev?subject=Enterprise%20plan) with any questions.
 
-## Credits and usage
+## How credits are used
 
-Scopy tracks billing tier and credit balance on each workspace. Review runs debit credits based on model and vector usage recorded during the run.
+Every review costs credits based on how much the pull request changes. Most pull requests cost a single credit, and larger ones cost more.
 
-- Paid monthly plans include a usage allowance that resets each billing period.
-- When a workspace runs out of credits, new reviews are skipped until you upgrade or wait for the next billing reset.
+- Paid monthly plans include a credit allowance that resets each billing period.
+- When a workspace runs out of credits, new reviews are skipped until you top up or the next billing reset.
+
+## Buying additional credits
+
+On a paid plan, workspace owners can buy extra credits any time from the billing page — useful for a busy month without changing plans. Credits are priced per plan: **$1.00 each on Premium** and **$0.80 each on Ultra**. Purchased credits are added on top of your monthly allowance.
 
 ## Model billing mode
 
