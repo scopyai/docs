@@ -19,6 +19,7 @@
           "product/connect-github",
           "product/manage-repositories",
           "product/review-pull-requests",
+          "product/documentation-references",
           "product/analytics",
           "product/team-and-github-settings",
           "product/billing"
@@ -64,5 +65,5 @@
       "github": "https://github.com/scopyai"
     }
   },
-  "description": "Scopy AI is an open-source AI code review tool. Catches bugs and improves quality of code"
+  "description": "Accurate open-source AI code review with repository-wide context and multi-stage verification"
 }

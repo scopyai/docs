@@ -39,6 +39,8 @@ The API validates configuration when the process starts.
 | `REVIEW_VERIFIER_MODEL`           | No       | `openai/gpt-5.4-mini`                    | Verifier model id passed to the selected AI provider.                                                      |
 | `REVIEW_WORKDIR`                  | No       | `.data/reviews`                          | Working directory for checked-out review repositories.                                                     |
 | `REVIEW_RUNS_DIR`                 | No       | `.runs`                                  | Directory for review debug artifacts.                                                                      |
+| `DOCS_LIBRARIAN_MODEL`            | No       | `REVIEW_VERIFIER_MODEL`                  | Model id used to answer documentation lookups during review.                                               |
+| `DOCS_RECRAWL_INTERVAL_HOURS`     | No       | `168`                                    | How often crawled documentation sources are refreshed, in hours.                                           |
 | `QDRANT_URL`                      | No       | None                                     | Enables semantic code search when set.                                                                     |
 | `QDRANT_API_KEY`                  | No       | None                                     | Qdrant API key.                                                                                            |
 | `QDRANT_COLLECTION`               | No       | `review_code_chunks`                     | Qdrant collection name.                                                                                    |
@@ -76,14 +78,20 @@ Set either `OPENROUTER_API_KEY` or `AI_GATEWAY_API_KEY` before expecting reviews
 
 ## Bring-your-own-key storage
 
-Workspaces can also supply their own OpenRouter or Vercel AI Gateway key (see [Billing](/product/billing#model-billing-mode)). To allow this on a self-hosted instance, set `MASTER_ENCRYPTION_KEY` — a base64 string of 32 random bytes used to encrypt stored keys at rest:
+Workspaces can also supply their own OpenRouter or Vercel AI Gateway key (see [Billing](/product/billing#model-billing-mode)). To allow this on a self-hosted instance, set `MASTER_ENCRYPTION_KEY`, a base64 string of 32 random bytes used to encrypt stored keys at rest:
 
 ```bash
 openssl rand -base64 32
 ```
 
-Treat this as a critical secret. If you lose it, stored keys become unreadable; if it leaks together with the database, they can be decrypted. Leave `MASTER_ENCRYPTION_KEY` unset if you don't need per-workspace keys — reviews still run on the platform keys above.
+Treat this as a critical secret. If you lose it, stored keys become unreadable; if it leaks together with the database, they can be decrypted. Leave `MASTER_ENCRYPTION_KEY` unset if you don't need per-workspace keys; reviews still run on the platform keys above.
 
 ## Optional semantic search
 
 Set `QDRANT_URL` to enable semantic code search. When Qdrant is configured, Scopy can index repository chunks and retrieve related code during review. Leave it unset for a simpler deployment.
+
+## Documentation references
+
+The worker crawls a built-in catalog of library documentation sources (plus any workspace custom sources) so reviews can cite official docs (see [Documentation references](/product/documentation-references)). No configuration is required: the worker seeds and crawls the catalog on startup and re-checks daily, refreshing each source after `DOCS_RECRAWL_INTERVAL_HOURS`.
+
+Custom source URLs are validated before crawling: only public `http(s)` URLs are accepted, and hostnames that resolve to private or internal addresses are rejected. Documentation lookups during review run on `DOCS_LIBRARIAN_MODEL` and fall back to the verifier model when unset.

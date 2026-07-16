@@ -1,0 +1,36 @@
+---
+title: "Documentation references"
+description: "Reviews check findings against the official documentation of the libraries your code uses."
+---
+
+Scopy backs its findings with the official documentation of the libraries your pull request touches. When a verdict depends on how an API actually behaves, like what it returns, which defaults apply, or how errors surface, Scopy checks the docs instead of guessing and cites what it found.
+
+You'll see this in review comments: findings about library behavior can include citations that link to the relevant documentation page, so you can verify the claim yourself.
+
+## Detected libraries
+
+Scopy recognizes the libraries in your repository automatically, so there is nothing to set up. Open a repository's settings and look at **Detected libraries** to see what was found.
+
+Each detected library has a toggle:
+
+- Leave it on, and reviews consult that library's documentation when relevant.
+- Turn it off, and reviews stop referencing it for this repository.
+
+Scopy supports documentation for popular libraries, frameworks, and platforms out of the box, and keeps it up to date for you. Reviews reflect current docs without you doing anything.
+
+## Adding your own documentation
+
+If your team uses an internal SDK or a library Scopy doesn't recognize, workspace owners and admins can add it in **Settings → Documentation sources**.
+
+To add a source, provide:
+
+- A name. This is how reviews will refer to the library.
+- A link to the documentation's `llms.txt` file. The link must be publicly reachable.
+
+Once added, the source shows its status and how many pages Scopy has indexed. After a docs update, use **Re-crawl** to refresh it; delete the source to stop referencing it. A workspace can have up to 10 custom sources.
+
+## Good to know
+
+- Documentation references work on every plan, for both detected and custom libraries.
+- Reviews only consult docs for libraries the pull request actually uses, so unrelated documentation never adds noise.
+- Custom sources are only visible to workspace owners and admins.
