@@ -65,5 +65,32 @@
       "github": "https://github.com/scopyai"
     }
   },
+  "redirects": [
+    {
+      "source": "/development/local-setup",
+      "destination": "/self-hosting/local-setup",
+      "permanent": true
+    },
+    {
+      "source": "/development/environment-variables",
+      "destination": "/self-hosting/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/overview",
+      "destination": "/self-hosting/how-scopy-works",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/review-engine",
+      "destination": "/product/how-review-works",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/monorepo",
+      "destination": "/self-hosting/how-scopy-works",
+      "permanent": true
+    }
+  ],
   "description": "Accurate open-source AI code review with repository-wide context and multi-stage verification"
 }
